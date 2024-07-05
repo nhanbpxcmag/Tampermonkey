@@ -1,4 +1,13 @@
-
+// ==UserScript==
+// @name         90phut live
+// @namespace    http://tampermonkey.net/
+// @version      2024-06-21
+// @description  try to take over the world!
+// @author       You
+// @match        *://*/*
+// @icon         data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
+// @grant        none
+// ==/UserScript==
 (function() {
   'use strict';
   document.getElementById('vbplayer')?.remove()
