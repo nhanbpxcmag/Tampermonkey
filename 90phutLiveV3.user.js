@@ -9,6 +9,8 @@
 // @grant        none
 // ==/UserScript==
 
+
+
 (function() {
   'use strict';
   document.getElementById('vbplayer')?.remove()
@@ -61,9 +63,10 @@ function loadVideo(){
 video.setAttribute('crossorigin','anonymous')
 video.setAttribute("controls","controls")
 video.setAttribute("x-webkit-airplay","allow")
+video.setAttribute("playsinline","playsinline")
 video.appendChild(source)
 document.body.appendChild(video);
-console.log(Hls.isSupported())
+video.disableRemotePlayback = false;
 if (Hls.isSupported()) {
   var hls = new Hls();
   hls.loadSource('https://apisportvb90xltcbk-secure.nsnd.live/-LPqKqxiYB9hfCb7Zu_6jQ/Fv2lucGIbhPi2caWYvF5Lg/1720170946234/live/sd-6MrAR8fRCsfwHuqS3M/playlist.m3u8');
@@ -72,24 +75,12 @@ if (Hls.isSupported()) {
     video.play();
   });
 }
-if (window.WebKitPlaybackTargetAvailabilityEvent) {
-  video.addEventListener('webkitplaybacktargetavailabilitychanged', function(event) {
-      switch (event.availability) {
-          case "available":
-              airPlay.style.display = 'block';
-              break;
-          default:
-              airPlay.style.display = 'none';
-      }
-      airPlay.addEventListener('click', function() {
-          video.webkitShowPlaybackTargetPicker();
-      });
-  });
-}else {
-  airPlay.style.display = 'none';
-}
 // var player = new Plyr(video);
 }
 
 })();
+
+
+
+
 
