@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         90phut live v3
+// @name         90phut live Safari
 // @namespace    http://tampermonkey.net/
 // @version      2024-06-21
 // @description  try to take over the world!
@@ -53,25 +53,14 @@ document.head.appendChild(script);
 function loadVideo(){
   var video = document.createElement('video');
   var source = document.createElement('source');
-  // source.setAttribute('type','application/x-mpegURL');
   source.src='https://apisportvb90xltcbk-secure.nsnd.live/-LPqKqxiYB9hfCb7Zu_6jQ/Fv2lucGIbhPi2caWYvF5Lg/1720170946234/live/sd-6MrAR8fRCsfwHuqS3M/playlist.m3u8';
 
 video.setAttribute('crossorigin','anonymous')
 video.setAttribute("controls","controls")
-// video.setAttribute("x-webkit-airplay","allow")
 video.setAttribute("playsinline","playsinline")
 video.appendChild(source)
 document.body.appendChild(video);
 video.disableRemotePlayback = false;
-if (Hls.isSupported()) {
-  var hls = new Hls();
-  hls.loadSource('https://apisportvb90xltcbk-secure.nsnd.live/-LPqKqxiYB9hfCb7Zu_6jQ/Fv2lucGIbhPi2caWYvF5Lg/1720170946234/live/sd-6MrAR8fRCsfwHuqS3M/playlist.m3u8');
-  hls.attachMedia(video);
-  hls.on(Hls.Events.MANIFEST_PARSED,function() {
-    video.play();
-  });
-}
-// var player = new Plyr(video);
 }
 
 })();
